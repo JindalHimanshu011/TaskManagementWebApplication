@@ -1,0 +1,26 @@
+<p>dashboard works!</p>
+
+
+<h2>All Records</h2>
+<div *ngIf="loading">Loading...</div>
+<div *ngIf="error" style="color:red">{{ error }}</div>
+<ul *ngIf="!loading && !error">
+  <li *ngFor="let record of items">
+    Name: {{ record.userName }}, Password: {{ record.password }}
+  </li>
+</ul>
+
+
+<!-- <form class="row g-3 needs-validation" (ngSubmit)="onSubmit()" [formGroup]="dashboardFrom">
+    <div class="col-md-4">
+        <label class="form-label">User name</label>
+        <input type="text" formControlName="userName" class="form-control" required>
+    </div>
+    <div class="col-md-4">
+        <label class="form-label">Password</label>
+        <input type="password" formControlName="password" class="form-control" required>
+    </div>
+    <div class="col-12">
+        <button class="btn btn-primary" [disabled]="dashboardFrom.invalid" type="submit">Submit form</button>
+    </div>
+</form> -->
