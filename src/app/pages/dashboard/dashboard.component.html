@@ -1,26 +1,138 @@
-<p>dashboard works!</p>
-
-
 <h2>All Records</h2>
 <div *ngIf="loading">Loading...</div>
 <div *ngIf="error" style="color:red">{{ error }}</div>
-<ul *ngIf="!loading && !error">
-  <li *ngFor="let record of items">
-    Name: {{ record.userName }}, Password: {{ record.password }}
-  </li>
-</ul>
+
+<div>
+  <input type="text" placeholder="Filter by name" [(ngModel)]="nameFilter" />
+  <input type="text" placeholder="Filter by email" [(ngModel)]="emailFilter" />
+</div>
+
+<table border="1">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Phone</th>
+      <th>Address</th>
+      <th>actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of filteredUsers()">
+      <td>{{ user.Name }}</td>
+      <td>{{ user.Email }}</td>
+      <td>{{ user.Phone }}</td>
+      <td>{{ user.Address }}</td>
+      <td>
+        <button class="action" (click)="update(user.Id)">Update</button>
+        <button class="action" (click)="onDelete(user.Id)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
 
-<!-- <form class="row g-3 needs-validation" (ngSubmit)="onSubmit()" [formGroup]="dashboardFrom">
-    <div class="col-md-4">
-        <label class="form-label">User name</label>
-        <input type="text" formControlName="userName" class="form-control" required>
-    </div>
-    <div class="col-md-4">
-        <label class="form-label">Password</label>
-        <input type="password" formControlName="password" class="form-control" required>
-    </div>
-    <div class="col-12">
-        <button class="btn btn-primary" [disabled]="dashboardFrom.invalid" type="submit">Submit form</button>
-    </div>
-</form> -->
+<button [routerLink]="['/add-user']">Add New User</button>
+<button [routerLink]="['/login']">Go To Home</button>
+
+
+
+
+
+
+
+<style>
+  form {
+    border: 3px solid #f1f1f1;
+  }
+
+  input[type=text],
+  input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+
+  button {
+    background-color: #04AA6D;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+  }
+
+  button.action {
+    background-color: #04AA6D;
+    color: white;
+    padding: 14px;
+    margin: 8px;
+    border: none;
+    cursor: pointer;
+    width: 45%;
+  }
+
+  button:hover {
+    opacity: 0.8;
+  }
+
+  cancelbtn {
+    width: auto;
+    padding: 10px 18px;
+    background-color: #f44336;
+  }
+
+  imgcontainer {
+    text-align: center;
+    margin: 24px 0 12px 0;
+  }
+
+  img.avatar {
+    width: 40%;
+    border-radius: 50%;
+  }
+
+  container {
+    padding: 16px;
+  }
+
+  span.psw {
+    float: right;
+    padding-top: 16px;
+  }
+
+  @media screen and (max-width: 300px) {
+    span.psw {
+      display: block;
+      float: none;
+    }
+
+    .cancelbtn {
+      width: 100%;
+    }
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  th,
+  td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: left;
+  }
+
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+
+  tr:hover {
+    background-color: #ddd;
+  }
+</style>

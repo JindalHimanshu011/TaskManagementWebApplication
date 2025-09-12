@@ -1,13 +1,15 @@
 export class UserRegister {
-    userId!: number;
-    userName!: string;
-    emailId!: string;
-    password!: string;
+    Id!: number;
+    Name!: string;
+    email!: string;
+    Phone!: string;
+    Address!: string;
 
-    constructor() { 
-        this.userId = 0;
-        this.userName = '';
-        this.emailId = '';
-        this.password = '';
+    constructor() {
+        this.Id = 0;
+        this.Name = '';
+        this.email = '';
+        this.Phone = '';
+        this.Address = '';
     }
 }
