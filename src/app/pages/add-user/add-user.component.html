@@ -1,98 +1,103 @@
 <form class="row g-3 needs-validation" (ngSubmit)="onSubmit()" [formGroup]="addUserForm">
     <div class="col-md-4">
         <label class="form-label">name</label>
-        <input type="text" formControlName="Name" class="form-control" required>
-        <input type="text" formControlName="Id" [style.display]="'none'" class="form-control">
+        <input type="text" formControlName="Name" class="form-control" required [(ngModel)]="Name">
     </div>
-        <div class="col-md-4">
+    <div class="col-md-4">
         <label class="form-label">Email</label>
-        <input type="text" formControlName="Email" class="form-control" required>
+        <input type="text" formControlName="Email" class="form-control" required [(ngModel)]="Email">
     </div>
-        <div class="col-md-4">
+    <div class="col-md-4">
         <label class="form-label">Phone</label>
-        <input type="number" formControlName="Phone" class="form-control" required>
+        <input type="number" formControlName="Phone" class="form-control" required [(ngModel)]="Phone">
     </div>
 
     <div class="col-md-4">
         <label class="form-label">Address</label>
-        <input type="text" formControlName="Address" class="form-control" required>
+        <input type="text" formControlName="Address" class="form-control" required [(ngModel)]="Address">
     </div>
     <div class="col-12">
-        <button class="btn btn-primary" [disabled]="addUserForm.invalid" type="submit">Add User</button>
+        <button class="btn btn-primary" [disabled]="addUserForm.invalid" type="submit">{{Id==0? "Add User": "Update User"}} </button>
+        <button [routerLink]="['/dashboard']">Go Back</button>
+    </div>
+    <div display="none">
+        <input type="text" formControlName="Id"  [(ngModel)]="Id" [style.display]="'none'" class="form-control">
     </div>
 </form>
 
 
 
 <style>
-form {
-border: 3px solid #f1f1f1;
-}
+    form {
+        border: 3px solid #f1f1f1;
+    }
 
-/* Full-width inputs */
-input[type=text], input[type=number] {
-width: 100%;
-padding: 12px 20px;
-margin: 8px 0;
-display: inline-block;
-border: 1px solid #ccc;
-box-sizing: border-box;
-}
+    /* Full-width inputs */
+    input[type=text],
+    input[type=number] {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+    }
 
-/* Set a style for all buttons */
-button {
-background-color: #04AA6D;
-color: white;
-padding: 14px 20px;
-margin: 8px 0;
-border: none;
-cursor: pointer;
-width: 100%;
-}
+    /* Set a style for all buttons */
+    button {
+        background-color: #04AA6D;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+    }
 
-/* Add a hover effect for buttons */
-button:hover {
-opacity: 0.8;
-}
+    /* Add a hover effect for buttons */
+    button:hover {
+        opacity: 0.8;
+    }
 
-/* Extra style for the cancel button (red) */
-cancelbtn {
-width: auto;
-padding: 10px 18px;
-background-color: #f44336;
-}
+    /* Extra style for the cancel button (red) */
+    cancelbtn {
+        width: auto;
+        padding: 10px 18px;
+        background-color: #f44336;
+    }
 
-/* Center the avatar image inside this container */
-imgcontainer {
-text-align: center;
-margin: 24px 0 12px 0;
-}
+    /* Center the avatar image inside this container */
+    imgcontainer {
+        text-align: center;
+        margin: 24px 0 12px 0;
+    }
 
-/* Avatar image */
-img.avatar {
-width: 40%;
-border-radius: 50%;
-}
+    /* Avatar image */
+    img.avatar {
+        width: 40%;
+        border-radius: 50%;
+    }
 
-/* Add padding to containers */
-container {
-padding: 16px;
-}
+    /* Add padding to containers */
+    container {
+        padding: 16px;
+    }
 
-/* The "Forgot password" text */
-span.psw {
-float: right;
-padding-top: 16px;
-}
+    /* The "Forgot password" text */
+    span.psw {
+        float: right;
+        padding-top: 16px;
+    }
 
-/* Change styles for span and cancel button on extra small screens */
-@media screen and (max-width: 300px) {
-span.psw {
-display: block;
-float: none;
-}
-.cancelbtn {
-width: 100%;
-}
-}
+    /* Change styles for span and cancel button on extra small screens */
+    @media screen and (max-width: 300px) {
+        span.psw {
+            display: block;
+            float: none;
+        }
+
+        .cancelbtn {
+            width: 100%;
+        }
+    }
 </style>

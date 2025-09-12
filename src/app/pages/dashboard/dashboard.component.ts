@@ -19,9 +19,6 @@ export class DashboardComponent implements OnInit {
   nameFilter: string = '';
   emailFilter: string = '';
 
-
-
-
   dashboardFrom: FormGroup = new FormGroup({
     Name: new FormControl(""),
     Email: new FormControl(""),
@@ -62,7 +59,7 @@ export class DashboardComponent implements OnInit {
     this.ngOnInit();
   }
   update(Id: number) {
-    alert("Are you sure to update this user? " + Id);
+    this.router.navigate(['/add-user', Id]);
   }
 
 }

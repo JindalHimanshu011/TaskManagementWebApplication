@@ -1,14 +1,14 @@
 export class UserRegister {
     Id!: number;
     Name!: string;
-    email!: string;
+    Email!: string;
     Phone!: string;
     Address!: string;
 
     constructor() {
         this.Id = 0;
         this.Name = '';
-        this.email = '';
+        this.Email = '';
         this.Phone = '';
         this.Address = '';
     }

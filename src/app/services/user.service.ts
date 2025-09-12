@@ -13,6 +13,14 @@ export class UserService {
     return localStorage.getItem('data');
   }
 
+  getUserbyId(Id: number) {
+    const data = localStorage.getItem('data');
+    const parsed = data ? JSON.parse(data) : [];
+    const currentList = Array.isArray(parsed) ? parsed : [];
+    const currentUser = currentList.find(user => user.Id == Id);
+    return currentUser;
+  }
+
   deleteUser(Id: number): void {
     const data = localStorage.getItem('data');
     const parsed = data ? JSON.parse(data) : [];
@@ -21,16 +29,20 @@ export class UserService {
     localStorage.setItem('data', JSON.stringify(updatedList));
   }
 
-
-
-
-
   addUser(newUser: UserRegister): void {
     const data = localStorage.getItem('data');
     const parsed = data ? JSON.parse(data) : [];
     const currentList = Array.isArray(parsed) ? parsed : [];
     if (newUser.Id != 0) {
-      alert("User with this ID already exists.");
+      for (let i = 0; i < currentList.length; i++) {
+        if (currentList[i].Id == newUser.Id) {
+          currentList[i].Name = newUser.Name;
+          currentList[i].Email = newUser.Email;
+          currentList[i].Phone = newUser.Phone;
+          currentList[i].Address = newUser.Address;
+          break;
+        }
+      }
     }
     else {
       newUser.Id = Math.max(...currentList.map(user => user.Id));
@@ -40,8 +52,4 @@ export class UserService {
 
     localStorage.setItem('data', JSON.stringify(currentList));
   }
-
-  // registerUser(obj: UserRegister) {
-  //   localStorage.setItem('data', JSON.stringify(obj));
-  // }
 }
