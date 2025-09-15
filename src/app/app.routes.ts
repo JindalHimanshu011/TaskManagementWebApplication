@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { LoginComponent } from './pages/login/login.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { AddUserComponent } from './pages/add-user/add-user.component';
+import { authGuard } from './services/authguard';
 export const routes: Routes = [
     {
         path: '',
@@ -10,18 +11,22 @@ export const routes: Routes = [
     },
     {
         path: 'login',
-        component: LoginComponent
+        loadComponent: () =>
+            import('./pages/login/login.component').then((c) => c.LoginComponent),
     },
     {
         path: 'dashboard',
-        component: DashboardComponent
+        component: DashboardComponent,
+        canActivate: [authGuard]
     },
     {
         path: 'add-user',
-        component: AddUserComponent
+        component: AddUserComponent,
+        canActivate: [authGuard]
     },
     {
         path: 'add-user/:Id',
-        component: AddUserComponent
+        component: AddUserComponent,
+        canActivate: [authGuard]
     }
 ];
