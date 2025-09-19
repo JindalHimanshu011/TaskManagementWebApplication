@@ -3,9 +3,10 @@ import { Router, RouterModule, ActivatedRoute } from '@angular/router';
 import { UserService as Userservice } from '../../services/user.service';
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ReuseComponent } from "../reusable/reuse/reuse.component";
 @Component({
   selector: 'app-add-user',
-  imports: [ReactiveFormsModule, CommonModule, RouterModule, FormsModule],
+  imports: [ReactiveFormsModule, CommonModule, RouterModule, FormsModule, ReuseComponent],
   templateUrl: './add-user.component.html',
   styleUrl: './add-user.component.css'
 })
@@ -21,9 +22,9 @@ export class AddUserComponent {
   addUserForm: FormGroup = new FormGroup({
     Id: new FormControl(this.Id),
     Name: new FormControl(this.Name, [Validators.required]),
-    Email: new FormControl("", [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]),
-    Phone: new FormControl("", [Validators.required]),
-    Address: new FormControl("", [Validators.required])
+    Email: new FormControl(""),
+    Phone: new FormControl(""),
+    Address: new FormControl("")
   });
 
   constructor(private router: Router, private route: ActivatedRoute, private userservice: Userservice) {

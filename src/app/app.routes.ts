@@ -17,12 +17,12 @@ export const routes: Routes = [
     {
         path: 'dashboard',
         component: DashboardComponent,
-        canActivate: [authGuard]
+        canActivate: [authGuard],data: { roles: ["ADMIN","USER"] }
     },
     {
         path: 'add-user',
         component: AddUserComponent,
-        canActivate: [authGuard]
+        canActivate: [authGuard],data: { roles: ["ADMIN"] }
     },
     {
         path: 'add-user/:Id',

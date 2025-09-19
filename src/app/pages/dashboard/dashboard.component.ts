@@ -6,9 +6,10 @@ import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { AddUserComponent } from '../add-user/add-user.component';
+import { ReuseComponent } from "../reusable/reuse/reuse.component";
 @Component({
   selector: 'app-dashboard',
-  imports: [ReactiveFormsModule, CommonModule, RouterLink, FormsModule],
+  imports: [ReactiveFormsModule, CommonModule, RouterLink, FormsModule, ReuseComponent],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
 })
